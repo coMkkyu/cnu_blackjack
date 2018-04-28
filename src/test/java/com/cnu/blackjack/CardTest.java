@@ -15,6 +15,12 @@ public class CardTest {
         assertThat(card.getSuit(), is(Suit.DIAMONDS));
     }
 
+    @Test
+    public void KQJ카드는_랭크값을_10으로_한다(){
+        Card card = new Card(12, Suit.SPADES);
+        assertThat(card.getRank(), is(10));
+    }
+
     @Test(expected = NoSuchRankException.class)
     public void 카드랭크_14는_생성_불가() {
         new Card(14, Suit.CLUBS);
