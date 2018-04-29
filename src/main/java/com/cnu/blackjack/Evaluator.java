@@ -23,19 +23,35 @@ public class Evaluator {
         playerMap.forEach((name, player)-> {
             int playerscore = getPlayerScore(player);
             if(playerscore == 21) {
-                System.out.println("블랙잭 입니다.");
-                player.winBet();
+                if(dealerscore == 21){
+                    System.out.println("DRAW");
+                    player.drawBet();
+                }else {
+                    System.out.println(name + "플레이어의 블랙잭 입니다.");
+                    player.winBet();
+                }
             }
             else if ((playerscore > dealerscore) && (playerscore < 21)){
-                System.out.println("플레이어의 승리");
+                System.out.println(name + " 플레이어의 승리");
                 player.winBet();
             }
             else if(playerscore == dealerscore){
                 System.out.println("DRAW");
+                player.drawBet();
             }
-            else System.out.println("플레이어의 패배");
+            else if(dealerscore > 21){
+                if(playerscore <= 21){
+                    System.out.println(name + " 플레이어의 승리");
+                    player.winBet();
+                }
+                else{
+                    System.out.println("DRAW");
+                    player.drawBet();
+                }
+            }
+            else System.out.println(name + " 플레이어의 패배");
 
-            System.out.println("플레이어의 현재 남은 balance : " + player.getBalance());
+            System.out.println(name + " 플레이어의 현재 남은 balance : " + player.getBalance());
         });
     }
 

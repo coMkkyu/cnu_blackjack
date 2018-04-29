@@ -29,6 +29,12 @@ public class Player {
         currentBet = 0;
     }
 
+    //비겼을 경우 배팅했던 금액을 돌려 받는다.
+    public void drawBet(){
+        balance = balance + currentBet;
+        currentBet = 0;
+    }
+
     public Card hitCard() {
         return hand.drawCard();
     }
