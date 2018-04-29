@@ -23,6 +23,12 @@ public class Player {
         currentBet = bet;
     }
 
+    //승리하였을경우 현재 배팅한금액의 2배를 보상받는다.
+    public void winBet(){
+        balance = balance + 2 * currentBet;
+        currentBet = 0;
+    }
+
     public Card hitCard() {
         return hand.drawCard();
     }
